@@ -8,6 +8,8 @@ public class CustomerDTO implements Serializable {
 	private String location;
 	private boolean married;
 	private int  noOfCustomer;
+	
+	
 
 	public CustomerDTO() {
 		System.out.println("invoking no-argument cons of CustomerDTO");

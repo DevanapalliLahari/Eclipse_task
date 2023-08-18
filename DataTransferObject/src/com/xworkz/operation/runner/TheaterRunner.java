@@ -7,47 +7,40 @@ import com.xworkz.operation.repository.TheaterRepository;
 public class TheaterRunner {
 
 	public static void main(String[] args) {
-     System.out.println("Running main");
-     TheaterDTO theaterDTO=new TheaterDTO("Imax", "Salar", 250, 300, 500);
-     System.out.println(theaterDTO.toString());
-     System.out.println();
-     
-     TheaterDTO theaterDTO1=new TheaterDTO("CTC", "Jailar", 200, 350, 250);
-     System.out.println(theaterDTO1.toString());
-     System.out.println();
-     
-     TheaterDTO theaterDTO2=new TheaterDTO("PVR", "Baby", 300, 300, 400);
-     System.out.println(theaterDTO2.toString());
-     System.out.println();
-     
-     TheaterDTO theaterDTO3=new TheaterDTO("Tri Veni", "Spy", 280, 300, 300);
-     System.out.println(theaterDTO3.toString());
-     System.out.println();
-     
-     TheaterDTO theaterDTO4=new TheaterDTO("Rk", "Bro", 300, 400, 300);
-     System.out.println(theaterDTO4.toString());
-     System.out.println();
-     
-     
-     TheaterRepository repository=new TheaterRepositoryImpl();
-     repository.save(theaterDTO);
-     System.out.println();
-     
-     TheaterRepository repository1=new TheaterRepositoryImpl();
-     repository1.save(theaterDTO1);
-     System.out.println();
-     
-     TheaterRepository repository2=new TheaterRepositoryImpl();
-     repository2.save(theaterDTO2);
-     System.out.println();
-     
-     TheaterRepository repository3=new TheaterRepositoryImpl();
-     repository3.save(theaterDTO3);
-     System.out.println();
-     
-     TheaterRepository repository4=new TheaterRepositoryImpl();
-     repository4.save(theaterDTO4);
-     System.out.println();
-	}
+		System.out.println("Running main");
+		TheaterDTO theaterDTO = new TheaterDTO("Imax", "Salar", 250, 300, 500);
 
+		TheaterDTO theaterDTO1 = new TheaterDTO("CTC", "Jailar", 200, 350, 250);
+
+		TheaterDTO theaterDTO2 = new TheaterDTO("PVR", "Baby", 300, 300, 400);
+
+		TheaterDTO theaterDTO3 = new TheaterDTO("Tri Veni", "Spy", 280, 300, 300);
+
+		TheaterDTO theaterDTO4 = new TheaterDTO("Rk", "Bro", 300, 400, 300);
+
+		TheaterRepository repository = new TheaterRepositoryImpl();
+
+		repository.save(theaterDTO);
+		repository.save(theaterDTO1);
+		repository.save(theaterDTO2);
+		repository.save(theaterDTO3);
+		repository.save(theaterDTO4);
+
+		TheaterDTO dTO = repository.findByName("Imax");
+		System.out.println(dTO);
+
+		TheaterDTO dTO1 = repository.findByFilmName("Spy");
+		System.out.println(dTO1);
+
+		TheaterDTO dTO2 = repository.findByCapacity(200);
+		System.out.println(dTO2);
+		System.out.println();
+
+		TheaterDTO[] dTO3 = repository.readAll();
+		for (int index = 0; index < dTO3.length; index++) {
+			if (dTO3[index] != null) {
+				System.out.println(dTO3[index]);
+			}
+		}
+	}
 }
